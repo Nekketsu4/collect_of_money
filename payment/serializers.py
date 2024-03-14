@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 
 
 class PaymentSerializers(serializers.ModelSerializer):
-    pay_amount = serializers.IntegerField(default=0)
 
     class Meta:
         model = Payment
@@ -12,15 +11,15 @@ class PaymentSerializers(serializers.ModelSerializer):
 
 
 class ListUserPaymentSerializers(serializers.ModelSerializer):
-    payments = PaymentSerializers(many=True, read_only=True)
+    another = PaymentSerializers(many=True, read_only=True)
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'payments']
+        fields = ['first_name', 'last_name', 'another']
 
 
 class AddPaymentSerializers(serializers.ModelSerializer):
 
     class Meta:
         model = Payment
-        fields = ['card', 'pay_amount', 'owner', 'date_pay', 'pay_for_collect']
+        fields = ['card', 'pay_amount', 'owner', 'date_pay', 'collect']

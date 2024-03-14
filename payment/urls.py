@@ -2,8 +2,9 @@ from django.urls import path, include
 from rest_framework import routers
 from payment.views import *
 
+
 router = routers.SimpleRouter()
-router.register('payments', UserViewSet, 'payments')
+router.register('payments', PaymentViewSet, 'payments')
 router.register('add_payments', AddPaymentViewSet, 'add_payment')
 
 
