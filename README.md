@@ -17,18 +17,18 @@
 * [Django 5.0.3](https://www.djangoproject.com/)
 * [Django Rest Framework 3.14.0](https://www.django-rest-framework.org/)
 * [Redis 5.0.3](https://developer.redis.com/)
-* [Celery 5.3.6](https://docs.celeryq.dev/)
+* [Celery 5.3.6](https://docs.celeryq.dev/)s
 * [Gunicorn 21.2.0](https://gunicorn.org/)
 
 ## Установка
 
-* Клонируйте гит репозиторий выполнив команду https://github.com/Nekketsu4/game_store.git 
+* Клонируйте гит репозиторий выполнив команду https://github.com/Nekketsu4/collect_of_money.git 
 * Перейдите в папку с клоном проекта "cd path/collect_of_money"
 * Создайте виртуальное окружение выполнив команду "python3 -m venv venv"
 * Активируйте виртуальное окружение выполнив команду "source venv/bin/activate"
 
 ```
-git clone https://github.com/rg3915/django-experience.git
+git clone https://github.com/Nekketsu4/collect_of_money.git
 cd collect_of_money
 python -m venv venv
 source venv/bin/activate
