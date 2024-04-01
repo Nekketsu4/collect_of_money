@@ -5,5 +5,8 @@ __pycache__/
 *.py[cod]
 payment/migrations
 collect/migrations
-db.sqlite3
+.dockerignore
+media
 .pyc
+.env.dev
+.env.prod

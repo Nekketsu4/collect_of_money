@@ -1,14 +1,11 @@
-from django.core.mail import send_mail
-from server.settings import EMAIL_HOST
-
 from celery import shared_task
+
+from payment.models import Payment
+from collect.models import Collect
 
 
 @shared_task()
-def send_collect_notification(first_name, title, mail):
-    send_mail(
-        subject='Операция успешно выполнена',
-        message=f'Здравствуйте {first_name}! Сбор денежных средст на {title}, успешно создан!',
-        from_email=EMAIL_HOST,
-        recipient_list=[mail, ]
-    )
+def get_sum_count(collect_id):
+    get_collect = Collect.objects.get(pk=collect_id)
+    for payment in get_collect.payments.all():
+        summ = sum(payment.pay_amount)

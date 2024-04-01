@@ -1,0 +1,44 @@
+version: '3.9'
+
+services:
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    container_name: web
+    command: gunicorn server.wsgi:application --bind 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.prod
+    depends_on:
+      - db
+
+  db:
+    container_name: new_db
+    image: postgres:16.2-alpine3.19
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data/
+    env_file:
+      - .env.prod
+
+  redis:
+    image: redis:alpine3.19
+    hostname: redis
+
+  worker:
+    build:
+      context: .
+    hostname: worker
+    entrypoint: celery
+    command: -A celery_app.app worker --loglevel=info
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - .env.dev
+    links:
+      - redis
+    depends_on:
+      - redis
+      - db

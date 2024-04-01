@@ -7,7 +7,7 @@ from rest_framework_simplejwt.views import TokenVerifyView, TokenRefreshView, To
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('__debug__/', include("debug_toolbar.urls")),
+    # path('__debug__/', include("debug_toolbar.urls")),
     path('', include('payment.urls')),
     path('', include('collect.urls')),
 
